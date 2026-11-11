@@ -1,0 +1,218 @@
+:root {
+    color-scheme: light;
+    --surface: #ffffff;
+    --text: #202433;
+    --muted: #858b9b;
+    --line: #e9ebf1;
+    --primary: #0f0f0f;
+    --primary-soft: #efedff;
+    --danger: #e05260;
+    --shadow: 0 18px 55px rgba(34, 39, 70, .09);
+}
+
+* { 
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 48px 18px;
+    color: var(--text);
+    font: 15px/1.5 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+button, input { 
+    font: inherit; 
+}
+.app { 
+    width: 
+    min(100%, 620px); 
+    margin: 0 auto; 
+}
+
+.panel {
+    overflow: hidden; 
+    background: var(--surface); 
+    border: 1px solid rgba(230,232,240,.9);
+    border-radius: 22px; 
+    box-shadow: var(--shadow);
+}
+.composer { 
+    display: flex; 
+    gap: 10px; 
+    padding: 20px; 
+    border-bottom: 1px solid var(--line); 
+}
+.composer input {
+    min-width: 0; 
+    flex: 1; 
+    padding: 10px 15px; 
+    border: 1px solid var(--line);
+    border-radius: 12px; 
+    outline: none;
+    color: var(--text);
+    transition: border-color .2s, box-shadow .2s;
+}
+.composer input:focus { 
+    border-color: var(--primary); 
+}
+button { 
+    cursor: pointer; 
+    border: 0; 
+}
+.add-btn {
+    padding: 0 15px; 
+    border-radius: 12px; 
+    background: var(--primary); 
+    color: white;
+    font-weight: 700; 
+    transition: transform .15s, background .2s;
+}
+
+.add-btn:active { 
+    transform: scale(.97); 
+}
+.toolbar {
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    gap: 12px;
+    padding: 16px 20px 10px;
+}
+.count { 
+    color: var(--muted); 
+    font-size: 13px; 
+}
+.filters { 
+    display: flex; 
+    gap: 4px; 
+    padding: 4px; 
+    background: #f4f5f9; 
+    border-radius: 10px; 
+}
+.filter {
+    padding: 7px 10px;
+    border-radius: 7px; 
+    background: transparent; 
+    color: var(--muted);
+    font-size: 12px; 
+    font-weight: 700;
+}
+.filter.active { 
+    background: white; 
+    color: var(--primary); 
+    box-shadow: 0 1px 4px #20243312; 
+}
+.todo-list { 
+    list-style: none; 
+    margin: 0; 
+    padding: 8px 20px 14px; 
+}
+.todo-item {
+    display: flex; 
+    align-items: center; 
+    gap: 12px;
+    min-height: 58px;
+    border-bottom: 1px solid var(--line); animation: appear .2s ease-out;
+}
+.todo-item:last-child { 
+    border-bottom: 0; 
+}
+@keyframes appear { 
+    from { 
+        opacity: 0; 
+        transform: translateY(5px); 
+    } 
+    to { 
+        opacity: 1; 
+        transform: none; 
+    } 
+}
+.check {
+    display: grid; 
+    place-items: center; 
+    flex: 0 0 21px; 
+    width: 21px; 
+    height: 21px;
+    padding: 0; 
+    border: 1.5px solid #cbd0dd; 
+    border-radius: 7px;
+    background: white; 
+    color: white;
+}
+.todo-item.done .check { 
+    border-color: var(--primary); 
+    background: var(--primary); 
+}
+.check svg {
+    width: 13px; 
+    height: 13px; 
+}
+.todo-title { 
+    flex: 1; 
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+.todo-item.done .todo-title { 
+    color: #a2a7b3; 
+    text-decoration: line-through; 
+}
+.delete {
+    width: 34px; 
+    height: 34px;
+    border-radius: 9px; 
+    background: transparent;
+    color: #a0a5b2; 
+    transition: .15s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.delete:hover { 
+    color: var(--danger); 
+    background: #fff0f1; 
+}
+.empty { 
+    padding: 38px 20px 44px; 
+    text-align: center; 
+    color: var(--muted); 
+}
+
+.footer {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    gap: 12px;
+    padding: 14px 20px 18px; 
+    border-top: 1px solid var(--line); 
+    color: var(--muted); font-size: 12px;
+}
+.clear-btn { 
+    padding: 5px 0; 
+    background: transparent; 
+    color: var(--muted); 
+    font-size: 12px; 
+}
+.clear-btn:hover { 
+    color: var(--danger); 
+}
+
+@media (max-width: 480px) {
+    body { padding: 30px 12px; }
+    .composer { padding: 14px; }
+    .toolbar { padding-inline: 14px; flex-wrap: wrap; }
+    .todo-list { padding-inline: 14px; }
+    .footer { padding-inline: 14px; }
+    .delete { opacity: 1; }
+    .add-btn { padding-inline: 14px; }
+}
+@media (prefers-reduced-motion: reduce) { 
+    *, *::before, *::after { 
+        animation-duration: .01ms !important; 
+        transition-duration: .01ms !important; 
+    } 
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f6fa">
+  <title>Todo List</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+    integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body>
+  <main class="app">
+    <section class="panel" aria-label="Danh sách công việc">
+      <form class="composer" id="todo-form">
+        <input id="todo-input" type="text" placeholder="Bạn cần làm gì hôm nay?" maxlength="160" autocomplete="off" aria-label="Tên công việc">
+        <button class="add-btn" type="submit">+ Thêm</button>
+      </form>
+
+      <div class="toolbar">
+        <span class="count" id="todo-count" aria-live="polite">0 công việc</span>
+        <div class="filters" role="group" aria-label="Lọc công việc">
+          <button class="filter active" type="button" data-filter="all" aria-pressed="true">Tất cả</button>
+          <button class="filter" type="button" data-filter="active" aria-pressed="false">Đang làm</button>
+          <button class="filter" type="button" data-filter="done" aria-pressed="false">Hoàn thành</button>
+        </div>
+      </div>
+
+      <ul class="todo-list" id="todo-list"></ul>
+      <div class="empty" id="empty-state">
+        <strong>Chưa có công việc nào</strong>
+        <div>Thêm một việc để bắt đầu nhé!</div>
+      </div>
+
+      <footer class="footer">
+        <span id="remaining-count">0 việc cần hoàn thành</span>
+        <button class="clear-btn" id="clear-completed" type="button">Xóa việc đã xong</button>
+      </footer>
+    </section>
+  </main>
+
+  <script src="./index.js"></script>
+</body>
+</html>
